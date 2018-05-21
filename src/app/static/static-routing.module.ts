@@ -1,18 +1,32 @@
 import { NgModule, Input } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AboutComponent } from './about/about.component';
-import { FeaturesComponent } from './features/features.component';
+import { ProductComponent } from './product/product.component';
+import { BrandComponent } from './brand/brand.component';
+import { JacketComponent } from './jacket/jacket.component';
+import { SwatchComponent } from './swatch/swatch.component';
+import { ConfiguratorComponent } from './configurator/configurator.component';
 
 const routes: Routes = [
-  { path: 'about', 
-    component: AboutComponent,
-    data: { title: 'About' } 
+  { path: 'product', 
+    component: ProductComponent,
+    data: { title: 'Product' } 
   },
-  {
-    path: 'features',
-    component: FeaturesComponent,
-    data: { title: 'Features' }
+  { path: 'brand', 
+    component: BrandComponent,
+    data: { title: 'Brand' } 
+  },
+  { path: 'jacket', 
+    component: JacketComponent,
+    data: { title: 'Jacket' } 
+  },
+  { path: 'swatch', 
+    component: SwatchComponent,
+    data: { title: 'Swatch' } 
+  },
+  { path: 'configurator', 
+    component: ConfiguratorComponent,
+    data: { title: 'Configurator' } 
   }
 ];
 

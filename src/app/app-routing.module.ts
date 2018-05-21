@@ -1,28 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { ProductComponent } from './product/product.component.ts';
 import { SettingsComponent } from './settings';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'about',
+    redirectTo: 'product',
     pathMatch: 'full'
   },
   {
+    path: '**',
+    redirectTo: 'product'
+  },{
     path: 'settings',
     component: SettingsComponent,
     data: {
       title: 'Settings'
     }
-  },
-  {
-    path: 'examples',
-    loadChildren: 'app/examples/examples.module#ExamplesModule'
-  },
-  {
-    path: '**',
-    redirectTo: 'about'
   }
 ];
 

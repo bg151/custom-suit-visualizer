@@ -12,7 +12,6 @@ import {
   ActionAuthLogout,
   selectorAuth,
   routerTransition,
-  TIles
 } from '@app/core';
 import { environment as env } from '@env/environment';
 
@@ -36,42 +35,16 @@ export class AppComponent implements OnInit, OnDestroy {
   logo = require('../assets/logo.png');
   favicon = require('../assets/favicon.png');
   navigation = [
-    { link: 'about', label: 'Product' },
-    { link: 'features', label: 'Brand' },
-    { link: 'examples', label: 'Configurator' }
+    { link: 'product', label: 'Product' },
+    { link: 'brand', label: 'Brand' },
+    { link: 'jacket', label: 'Jacket' },
+    { link: 'swatch', label: 'Color' },
+    { link: 'configurator', label: 'Customizer' }
   ];
-  navigationSideMenu = [
-    ...this.navigation,
-    { link: 'settings', label: 'Settings' }
-  ];
+  navigationSideMenu = this.navigation
+   
   isAuthenticated;
 
-  title = 'Product Type';
-  product = '';
-  brand = '';
-  id = Math.random();
-  showBrands = '';
-  
-  Items = this.Products;
-
-  Order : { 
-    id : Math.random(),
-    product : '',
-    brand : ''
-  };
-
-  setSelection(item : string){
-    if (this && !this.product){
-      this.product = item.name;
-      this.Items = this.Brands;
-      this.title = 'Product Brand';
-      this.showBrands = 'showBrands';
-    }else {
-      this.brand = item.name;
-      this.Items = [];
-      this.title = 'Design your suit'
-    }
-  }
 
   constructor(
     public overlayContainer: OverlayContainer,
