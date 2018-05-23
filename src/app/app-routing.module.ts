@@ -11,14 +11,14 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: '**',
-    redirectTo: 'product'
-  },{
     path: 'settings',
     component: SettingsComponent,
     data: {
       title: 'Settings'
     }
+  },{
+    path: '**',
+    redirectTo: 'settings'
   }
 ];
 

@@ -39,7 +39,9 @@ export class AppComponent implements OnInit, OnDestroy {
     { link: 'brand', label: 'Brand' },
     { link: 'jacket', label: 'Jacket' },
     { link: 'swatch', label: 'Color' },
-    { link: 'configurator', label: 'Customizer' }
+    { link: 'configurator', label: 'Customizer' },
+    { link: 'settings', label: 'Settings' }
+
   ];
   navigationSideMenu = this.navigation
    
