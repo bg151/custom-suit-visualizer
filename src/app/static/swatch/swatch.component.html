@@ -1,0 +1,24 @@
+<div class="background">
+  <div class="gradient">
+    <div class="container" [ngClass]="animateOnRouteEnter">
+      
+      <h2>{{title}}</h2>
+      <div class="actions" >
+        <div class="container tile-grid" >
+          <div class="row justify-content-md-center" *ngFor="let item of Products;" [routerLink]="configurator">
+            <div >
+              <div class="col" (click)="select()">
+                <a target="_self" rel="noopener" class="thumb-label" routerLink="../configurator"  routerLinkActive="active">
+                  <div class="swatch-icon" [style.background]=[item.url]></div>
+                  <span>{{item.name}}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+

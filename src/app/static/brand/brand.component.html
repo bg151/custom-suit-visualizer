@@ -1,0 +1,23 @@
+<div class="background">
+  <div class="gradient">
+    <div class="container" [ngClass]="animateOnRouteEnter">
+      
+      <h2>{{title}}</h2>
+      <div class="actions" >
+        <div class="container tile-grid" >
+          <div class="row justify-content-md-center">
+            <div *ngFor="let item of Products;" [routerLink]="jacket">
+              <div class="col" (click)="select()">
+                <a target="_self" rel="noopener" class="thumb-label" rel="noopener" class="thumb-label" routerLink="../jacket" routerLinkActive="active">
+                  <img src= {{item.url}} />
+                  <p>{{item.name}}</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
