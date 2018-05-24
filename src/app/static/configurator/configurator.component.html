@@ -7,8 +7,24 @@
     </div>
   </div>
   <!-- Fabrics Icons -->
-
   <div class="justify-content-md-center fabrics style" *ngFor="let item of Styles;" [ngClass]="{open : showFabricSection}">
+    <div class="col" (click)="PopulateDrawer(item.name)">
+      <a target="_blank" rel="noopener" class="style-label" >
+        <img src= {{item.url}} />
+        <p>{{item.name}}</p>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- Options Heading -->
+  <div class="justify-content-md-center" style="height:30px;">
+    <div class="style heading" (click)="showOptions()">
+      <p>Options</p>
+    </div>
+  </div>
+  <!-- Options Icons -->
+  <div class="justify-content-md-center fabrics style" *ngFor="let item of Options;" [ngClass]="{open : showOptionSection}">
     <div class="col" (click)="PopulateDrawer(item.name)">
       <a target="_blank" rel="noopener" class="style-label" >
         <img src= {{item.url}} />
@@ -39,14 +55,14 @@
   <div id="visualizer" class="visualizer">
 
     <img id="model" src="../../../assets/visual/model.png" [hidden]="!showModel"/>
-    <img id="shirt" src="../../../assets/visual/shirt.png" [style.visibility]="(!inside && visible) ? 'visible' : 'hidden' " [ngClass]="{zoom : inside}"/>
-    <img id="full_shirt" src="../../../assets/visual/full_shirt.png" [style.visibility]="(!inside && !visible) ? 'visible' : 'hidden' "  [ngClass]="{zoom : inside}"/>
+    <img id="shirt" src="../../../assets/visual/shirt.png" [style.visibility]="(!inside && showJacket) ? 'visible' : 'hidden' " [ngClass]="{zoom : inside}"/>
+    <img id="full_shirt" src="../../../assets/visual/full_shirt.png" [style.visibility]="(!inside && !showJacket) ? 'visible' : 'hidden' "  [ngClass]="{zoom : inside}"/>
     <img id="tie" src="../../../assets/visual/tie.png" [hidden]="inside"/>
     <img id="vestTop" src="{{vestTop}}" [hidden]="!showVest" [ngClass]="{zoom : inside}"/>
     <img id="vestBottom" src="{{vestBottom}}" [hidden]="!showVest"/>
-    <img id="jacket" src="{{jacketUrl}}" [hidden]="!visible" [ngClass]="{zoom : inside}"/>
-    <img id="sleeves" src="{{sleevesUrl}}" [hidden]="!visible" [ngClass]="{zoom : inside}" />
-    <img id="jacket-bottom" src="{{jacketBottomUrl}}" [hidden]="!visible"  [ngClass]="{zoom : inside}"/>
+    <img id="jacket" src="{{jacketUrl}}" [hidden]="!showJacket" [ngClass]="{zoom : inside}"/>
+    <img id="sleeves" src="{{sleevesUrl}}" [hidden]="!showJacket" [ngClass]="{zoom : inside}" />
+    <img id="jacket-bottom" src="{{jacketBottomUrl}}" [hidden]="!showJacket"  [ngClass]="{zoom : inside}"/>
     <img id="pants" src="{{pantsUrl}}" [hidden]="inside" /> 
     <img id="belt" src="{{beltUrl}}" [hidden]="inside" /> 
     <img id="shoes" src="../../../assets/visual/shoes.png" [hidden]="inside"  /><!-- lining pictures -->
@@ -58,6 +74,6 @@
 
 
 <div id="toggle-controls">
-  <div class="jacket-toggle" [ngClass]="{'off': !visible}" (click)="toggleJacket()" > </div>
+  <div class="jacket-toggle" [ngClass]="{'off': !showJacket}" (click)="toggleJacket()" > </div>
   <div class="vest-toggle" [ngClass]="{'off': !showVest}" (click)="toggleVest()" > </div>
 </div>

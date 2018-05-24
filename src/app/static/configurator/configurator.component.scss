@@ -241,12 +241,14 @@ h2{
 .style-dock {
   background: white;
   z-index: 5;
+  box-shadow: 2px 2px 4px #aaa;
 
   img {
     max-width: 80%;
     margin: 0 auto;
+    max-height: 80px;
   }
-  .fabrics {
+  .fabrics, .options {
     &.open{
       max-height: 150px;
     }
@@ -254,20 +256,31 @@ h2{
     transition: .5s max-height linear;
     max-height: 0px;
   }
+  .options {
+    &.open{
+      max-height: 250px;
+    }
+    border-top: 0px;
+    transition: .5s max-height linear;
+    max-height: 0px;
+  }
+
   .style.heading {
     width: 100% !important;
     color: black !important;
     min-height: 30px;
-    border-bottom: 0px !important;
+    border-bottom: 1px solid black !important;
   }
   .style{
-    border: 1px solid black;
+    &.open{
+      border-bottom: 1px solid black;
+    }
     border-bottom:0px;
     text-align: center;
     overflow: hidden;
-    &:last-child{
-      border-bottom: 1px solid black;
-    }
+    // &:last-child{
+    //   border-bottom: 1px solid black;
+    // }
     .style-label {
       color: black;
       font-size: 10px;
@@ -328,7 +341,7 @@ h2{
     height:45%;
     top: 65px;
     left: 0px;
-    transition: .5s all ease-in;
+    transition: .5s height ease-in;
     &.zoom {
       height: 65% !important;
       left: -60px;
@@ -397,10 +410,19 @@ h2{
   transition: .5s all linear;
   color: black;
   background: white;
+  top: 65px !important;
+  width: 90px;
+  .col{
+    border-right: 1px solid black;
+    padding-right: 0px;
+    border-bottom: 1px solid black;
+  }
   img, span {
     display: block;
     max-width: 99px;
     text-align: center;
+    max-height: 95px;
+    margin: auto;
   }
   .swatch-code {
     font-size: 9px;
@@ -409,7 +431,7 @@ h2{
     font-size: 11px;
   }
   &.showDrawer {
-    left: 100px !important;
+    left: 101px !important;
   }
   .style.heading{
     color: black;

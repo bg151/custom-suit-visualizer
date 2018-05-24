@@ -11,15 +11,49 @@ import { ANIMATE_ON_ROUTE_ENTER } from '@app/core';
 export class ConfiguratorComponent{
   animateOnRouteEnter = ANIMATE_ON_ROUTE_ENTER;
   Styles = [{
-    name: 'Jacket & Pants',
+    name: 'Jacket & Pants', 
     url : './assets/fabrics.png'
   },{
     name: 'Body Lining',
     url : './assets/lining.png'
+  }]; //Sleeve lining not visible on visualizer so its not in POC
+
+  Options = [{
+    name: 'Lapel',
+    url : './assets/visual/notch.jpg'
+  },{
+    name: 'Coat Fit', //slim or executive
+    url : './assets/visual/slim_coat.jpg'
+  },{
+    name: 'Coat Type', //Single or double 
+    url : './assets/single_2.png'
+  },{
+    name: 'Pant Fit', //slim
+    url : './assets/pants_slim.png'
+  },{
+    name: 'Pant Type', // double pleat
+    url : './assets/pants_flat.png'
+  }];
+
+  Upgrades = [{
+    name: 'Lapel Stiching',
+    url : './assets/fabrics.png'
+  },{
+    name: 'Slanted Pockets', //slim or executive
+    url : './assets/visual/slim_fit_coat.jpg'
+  },{
+    name: 'Functional Button Holes', //Single or double 
+    url : './assets/lining.png'
+  },{
+    name: 'Ticket Pocket', //slim
+    url : './assets/lining.png'
+  },{
+    name: 'Pant Type', // double pleat
+    url : './assets/lining.png'
   }];
 
   toggleJacket() {
-    this.visible = !this.visible;
+    this.showJacket = !this.showJacket;
     this.inside = false;
   }
 
@@ -30,6 +64,13 @@ export class ConfiguratorComponent{
 
   showFabrics() {
     this.showFabricSection = !this.showFabricSection;
+    this.showOptionSection = false;
+    this.DrawerItems = [];
+  }
+
+  showOptions() {
+    this.showOptionSection = !this.showOptionSection;
+    this.showFabricSection = false;
     this.DrawerItems = [];
   }
 
@@ -66,7 +107,70 @@ export class ConfiguratorComponent{
         code : '5030372',
         url  : './assets/visual/navy.jpg'
       }];
-    } 
+    } else if (str === 'lapel'){
+      this.hideModel = true;
+      this.DrawerItems = [{
+        name : 'Notch',
+        code : '',
+        url  : './assets/visual/notch.jpg'
+      },{
+        name : 'Peak',
+        code : '',
+        url  : './assets/visual/peak.jpg'
+      }];
+    } else if (str === 'coat fit'){
+      this.hideModel = true;
+      this.DrawerItems = [{
+        name : 'Extreme Slim',
+        code : '',
+        url  : './assets/visual/extreme_slim_coat.jpg'
+      },{
+        name : 'Slim',
+        code : '',
+        url  : './assets/visual/slim_coat.jpg'
+      },{
+        name : 'Executive',
+        code : '',
+        url  : './assets/visual/executive_coat.jpg'
+      }];
+    }else if (str === 'coat type'){
+      this.hideModel = true;
+      this.DrawerItems = [{
+        name : 'Single',
+        code : '',
+        url  : './assets/single_2.png'
+      },{
+        name : 'Double Breasted',
+        code : '',
+        url  : './assets/double_2.png'
+      }];
+    }else if (str === 'pant fit'){
+      this.hideModel = true;
+      this.DrawerItems = [{
+        name : 'Single',
+        code : '',
+        url  : './assets/pants_regular.png'
+      },{
+        name : 'Double Breasted',
+        code : '',
+        url  : './assets/pants_slim.png'
+      }];
+    }else if (str === 'pant type'){
+      this.hideModel = true;
+      this.DrawerItems = [{
+        name : 'Flat Front',
+        code : '',
+        url  : './assets/pants_flat.png'
+      },{
+        name : 'Single Pleat',
+        code : '',
+        url  : './assets/pants_single.jpg'
+      },{
+        name : 'Double Pleat',
+        code : '',
+        url  : './assets/pants_double.jpg'
+      }];
+    }
      
     this.DrawerItemType = string;
 
@@ -94,7 +198,7 @@ export class ConfiguratorComponent{
     } else if (type === 'body lining'){
       this.inside = true;
       this.showModel = false;
-      this.visible = true;
+      this.showJacket = true;
       this.liningTopUrl = '../../../assets/visual/lining_top_'+value+'.png';
       this.liningBottomUrl = '../../../assets/visual/lining_bottom_'+value+'.png';
     }
@@ -102,12 +206,13 @@ export class ConfiguratorComponent{
   }
 
   constructor() {
-    this.visible = true;
+    this.showJacket = true;
     this.inside = false;
     this.drawerClass = '';
     this.DrawerItemType = '';
     this.DrawerItems = [];
-    this.showFabricSection = true;
+    this.showFabricSection = false;
+    this.showOptionSection = true;
     this.showVest = true;
     //for view of body lining
     this.showModel = true;
