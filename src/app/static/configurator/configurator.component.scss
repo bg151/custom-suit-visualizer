@@ -406,15 +406,17 @@ h2{
 #style-drawer{
   z-index: 3;
   position: absolute;
-  left: 0px;
-  transition: .5s all linear;
+  left: -50px;
+  transition: .5s left ease-in-out;
   color: black;
   background: white;
   top: 65px !important;
   width: 90px;
   .col{
     border-right: 1px solid black;
+    border-left: 1px solid black;
     padding-right: 0px;
+    padding-left: 0px;
     border-bottom: 1px solid black;
   }
   img, span {
@@ -431,7 +433,7 @@ h2{
     font-size: 11px;
   }
   &.showDrawer {
-    left: 101px !important;
+    left: 116px !important;
   }
   .style.heading{
     color: black;

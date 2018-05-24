@@ -16,7 +16,6 @@
     </div>
   </div>
 
-
   <!-- Options Heading -->
   <div class="justify-content-md-center" style="height:30px;">
     <div class="style heading" (click)="showOptions()">
@@ -59,7 +58,7 @@
     <img id="full_shirt" src="../../../assets/visual/full_shirt.png" [style.visibility]="(!inside && !showJacket) ? 'visible' : 'hidden' "  [ngClass]="{zoom : inside}"/>
     <img id="tie" src="../../../assets/visual/tie.png" [hidden]="inside"/>
     <img id="vestTop" src="{{vestTop}}" [hidden]="!showVest" [ngClass]="{zoom : inside}"/>
-    <img id="vestBottom" src="{{vestBottom}}" [hidden]="!showVest"/>
+    <img id="vestBottom" src="{{vestBottom}}" [hidden]="!showVest" [ngClass]="{zoom : inside}"/>
     <img id="jacket" src="{{jacketUrl}}" [hidden]="!showJacket" [ngClass]="{zoom : inside}"/>
     <img id="sleeves" src="{{sleevesUrl}}" [hidden]="!showJacket" [ngClass]="{zoom : inside}" />
     <img id="jacket-bottom" src="{{jacketBottomUrl}}" [hidden]="!showJacket"  [ngClass]="{zoom : inside}"/>

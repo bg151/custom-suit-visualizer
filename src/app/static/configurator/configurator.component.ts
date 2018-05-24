@@ -136,7 +136,7 @@ export class ConfiguratorComponent{
     }else if (str === 'coat type'){
       this.hideModel = true;
       this.DrawerItems = [{
-        name : 'Single',
+        name : 'Single Breasted',
         code : '',
         url  : './assets/single_2.png'
       },{
@@ -147,7 +147,7 @@ export class ConfiguratorComponent{
     }else if (str === 'pant fit'){
       this.hideModel = true;
       this.DrawerItems = [{
-        name : 'Single',
+        name : 'Single Breasted',
         code : '',
         url  : './assets/pants_regular.png'
       },{
@@ -180,21 +180,29 @@ export class ConfiguratorComponent{
 
     let value = object.value.toLowerCase();
     let type = object.type.toLowerCase();
-
-    if (type === 'jacket & pants'){
+    if (type === 'coat type') {
+      let split =value.split(' ');
+      this.jacketType = split[0]
+    }
+    if (type === 'jacket & pants' ) {
+      this.suitColor = value;   
+    }
+    if (type === 'jacket & pants' || type === 'coat type' ){
       setTimeout(function (scope) {
         console.log(scope)
         scope.showModel = true;
-      },500, this)      
+      },500, this) 
+
+      if (value == 'black' || value == 'charcoal' || value == 'blue') this.suitColor = value;   
       this.inside = false;
-      this.jacketUrl = '../../../assets/visual/jacket_'+value+'.png';
-      this.sleevesUrl = '../../../assets/visual/sleeves_'+value+'.png';
-      this.jacketBottomUrl = ' ../../../assets/visual/jacket-bottom_'+value+'.png';
-      this.pantsUrl = '../../../assets/visual/pants_'+value+'.png';
-      this.beltUrl = '../../../assets/visual/belt_'+value+'.png';
-      this.neckUrl = '../../../assets/visual/neck_'+value+'.png';
-      this.vestTop = '../../../assets/visual/vest_top_'+value+'.png';
-      this.vestBottom = '../../../assets/visual/vest_bottom_'+value+'.png';
+      this.sleevesUrl = '../../../assets/visual/sleeves_'+this.suitColor+'.png';
+      this.jacketUrl = '../../../assets/visual/jacket_'+this.jacketType+'_top_'+this.suitColor+'.png';
+      this.jacketBottomUrl = ' ../../../assets/visual/jacket_'+this.jacketType+'_bottom_'+this.suitColor+'.png';
+      this.pantsUrl = '../../../assets/visual/pants_'+this.suitColor+'.png';
+      this.beltUrl = '../../../assets/visual/belt_'+this.suitColor+'.png';
+      this.neckUrl = '../../../assets/visual/neck_'+this.suitColor+'.png';
+      this.vestTop = '../../../assets/visual/vest_top_'+this.suitColor+'.png';
+      this.vestBottom = '../../../assets/visual/vest_bottom_'+this.suitColor+'.png';
     } else if (type === 'body lining'){
       this.inside = true;
       this.showModel = false;
@@ -202,8 +210,9 @@ export class ConfiguratorComponent{
       this.liningTopUrl = '../../../assets/visual/lining_top_'+value+'.png';
       this.liningBottomUrl = '../../../assets/visual/lining_bottom_'+value+'.png';
     }
-    
+    console.log(this.jacketUrl , this.jacketBottomUrl)
   }
+
 
   constructor() {
     this.showJacket = true;
@@ -213,15 +222,17 @@ export class ConfiguratorComponent{
     this.DrawerItems = [];
     this.showFabricSection = false;
     this.showOptionSection = true;
+    this.jacketType= 'single'
     this.showVest = true;
+    this.suitColor = 'blue';
     //for view of body lining
     this.showModel = true;
     //setup default garment
     this.vestTop = '../../../assets/visual/vest_top_blue.png';
     this.vestBottom = '../../../assets/visual/vest_bottom_blue.png';
-    this.jacketUrl = '../../../assets/visual/jacket_blue.png';
+    this.jacketUrl = '../../../assets/visual/jacket_single_top_blue.png';
     this.sleevesUrl = '../../../assets/visual/sleeves_blue.png';
-    this.jacketBottomUrl = ' ../../../assets/visual/jacket-bottom_blue.png';
+    this.jacketBottomUrl = ' ../../../assets/visual/jacket_single_bottom_blue.png';
     this.pantsUrl = '../../../assets/visual/pants_blue.png';
     this.beltUrl = '../../../assets/visual/belt_blue.png';
     //lining defaults
